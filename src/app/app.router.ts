@@ -10,7 +10,7 @@ export const appRoutes: Routes = [
         path: '',
         component: DefaultPageComponent,
         resolve: {
-            rates: BaseRateResolver
+            baseRate: BaseRateResolver
         }
     }
 ];
