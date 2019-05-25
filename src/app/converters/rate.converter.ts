@@ -11,13 +11,22 @@ export class RateConverter implements JsTsCustomConvert<Array<RateDto>> {
         return obj;
     }
     deserialize(value: object): Array<RateDto> {
-        const result = new Array<RateDto>();
+        let result = new Array<RateDto>();
         for (const val in value) {
             if (value[val]) {
                 result.push(new RateDto(val, value[val]));
             }
         }
+        result = result.sort((a: RateDto, b: RateDto) => {
+            if (a.name > b.name) {
+                return 1;
+            }
+            if (a.name < b.name) {
+                return -1;
+            }
 
+            return 0;
+        });
         return result;
     }
 }

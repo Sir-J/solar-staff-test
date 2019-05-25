@@ -1,5 +1,5 @@
 export class FilterDto {
     currency = 'EUR';
     rates: Array<string> = new Array<string>();
-    date: Date = undefined;
+    date: Date = new Date();
 }

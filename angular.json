@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "solar-staff-test": {
+        "solar-staff": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/solar-staff-test",
+                        "outputPath": "dist/solar-staff",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -26,9 +26,10 @@
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/ngx-toastr/toastr.css",
+                            "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.less"
                         ],
-                        "scripts": ["node_modules/bootstrap/dist/js/bootstrap.js"]
+                        "scripts": ["node_modules/jquery/dist/jquery.min.js", "node_modules/bootstrap/dist/js/bootstrap.js"]
                     },
                     "configurations": {
                         "production": {
@@ -60,18 +61,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "solar-staff-test:build"
+                        "browserTarget": "solar-staff:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "solar-staff-test:build:production"
+                            "browserTarget": "solar-staff:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "solar-staff-test:build"
+                        "browserTarget": "solar-staff:build"
                     }
                 },
                 "test": {
@@ -95,7 +96,7 @@
                 }
             }
         },
-        "solar-staff-test-e2e": {
+        "solar-staff-e2e": {
             "root": "e2e/",
             "projectType": "application",
             "prefix": "",
@@ -104,11 +105,11 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "solar-staff-test:serve"
+                        "devServerTarget": "solar-staff:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "solar-staff-test:serve:production"
+                            "devServerTarget": "solar-staff:serve:production"
                         }
                     }
                 },
@@ -122,5 +123,5 @@
             }
         }
     },
-    "defaultProject": "solar-staff-test"
+    "defaultProject": "solar-staff"
 }
