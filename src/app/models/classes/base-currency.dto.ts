@@ -1,7 +1,5 @@
+import { RateConverter } from 'app/converters/rate.converter';
 import { JsonProperty, SerializeOnlyDecorated } from 'js-ts-mapper';
-import { RateConverter } from 'src/app/converters/rate.converter';
-
-import { RateDto } from './rate.dto';
 
 @SerializeOnlyDecorated()
 export class BaseCurrencyDto {

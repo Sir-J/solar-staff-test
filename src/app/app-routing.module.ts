@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DefaultPageComponent } from 'src/app/components';
-import { BaseRateResolver } from 'src/app/resolver';
+import { DefaultPageComponent } from 'app/components';
+import { BaseRateResolver } from 'app/resolver';
 
 export const routes: Routes = [
     {
@@ -12,7 +12,6 @@ export const routes: Routes = [
         }
     }
 ];
-
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BaseCurrencyDto, RateDto } from 'app/models/classes';
+import { ExchangeRateService } from 'app/services';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, throwError } from 'rxjs';
-import { catchError, takeUntil, finalize, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { BaseCurrencyDto, RateDto } from 'src/app/models/classes';
-import { ExchangeRateService } from 'src/app/services';
+import { catchError, debounceTime, finalize, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-exchanger',
@@ -94,11 +94,7 @@ export class ExchangerComponent implements OnInit, OnDestroy {
     }
 
     protected catchErrorFn(error: any) {
-        if (error.error && error.error.message) {
-            this.toastr.error(error.error.message);
-        } else {
-            this.toastr.error('Ошибка загрузки данных');
-        }
+        this.toastr.error('Ошибка загрузки данных');
         return throwError(error);
     }
 

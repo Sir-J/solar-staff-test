@@ -6,12 +6,12 @@ import { MAT_DATE_LOCALE } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { DefaultPageComponent } from 'app/components';
+import { MaterialModule } from 'app/material.module';
+import { BaseRateResolver } from 'app/resolver';
+import { ExchangeRateService } from 'app/services';
 import { BlockUIModule } from 'ng-block-ui';
 import { ToastrModule } from 'ngx-toastr';
-import { DefaultPageComponent } from 'src/app/components';
-import { MaterialModule } from 'src/app/material.module';
-import { BaseRateResolver } from 'src/app/resolver';
-import { ExchangeRateService } from 'src/app/services';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

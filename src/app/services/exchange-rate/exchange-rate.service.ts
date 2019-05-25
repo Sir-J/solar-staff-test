@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseCurrencyDto } from 'app/models/classes';
 import { JsTsMapper } from 'js-ts-mapper';
-import { Observable } from 'rxjs';
 import * as moment from 'moment/moment';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { BaseCurrencyDto, FilterDto } from 'src/app/models/classes';
 
 @Injectable()
 export class ExchangeRateService {

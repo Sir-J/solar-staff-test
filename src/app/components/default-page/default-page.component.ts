@@ -1,13 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Sort } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { BaseCurrencyDto, FilterDto, RateDto } from 'app/models/classes';
+import { ExchangeRateService } from 'app/services';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, throwError } from 'rxjs';
-import { catchError, finalize, takeUntil, debounceTime } from 'rxjs/operators';
-import { BaseCurrencyDto, RateDto } from 'src/app/models/classes';
-import { FilterDto } from 'src/app/models/classes/filter.dto';
-import { ExchangeRateService } from 'src/app/services';
+import { catchError, debounceTime, finalize, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-default-page',
