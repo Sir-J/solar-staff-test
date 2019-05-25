@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Sort } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { ToastrService } from 'ngx-toastr';
+import { Subject, throwError } from 'rxjs';
+import { catchError, finalize, takeUntil, debounceTime } from 'rxjs/operators';
 import { BaseCurrencyDto, RateDto } from 'src/app/models/classes';
 import { FilterDto } from 'src/app/models/classes/filter.dto';
 import { ExchangeRateService } from 'src/app/services';
@@ -23,7 +25,12 @@ export class DefaultPageComponent implements OnInit, OnDestroy {
     minDate = new Date(1999, 4, 1);
     maxDate = new Date();
 
-    constructor(private route: ActivatedRoute, private service: ExchangeRateService) {}
+    showSelectedRates = new Subject();
+
+    @BlockUI()
+    blockUI: NgBlockUI;
+
+    constructor(private route: ActivatedRoute, private service: ExchangeRateService, private toastr: ToastrService) {}
 
     ngOnInit() {
         this.model = this.route.snapshot.data['baseRate'] as BaseCurrencyDto;
@@ -35,6 +42,19 @@ export class DefaultPageComponent implements OnInit, OnDestroy {
             this.mainCurrencies.sort();
         }
         this.filter.currency = this.model.base;
+
+        this.showSelectedRates
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                debounceTime(2000)
+            )
+            .subscribe(() => {
+                this.search();
+            });
+    }
+
+    changeFilterRates(): void {
+        this.showSelectedRates.next();
     }
 
     sortData(sort: Sort) {
@@ -62,9 +82,14 @@ export class DefaultPageComponent implements OnInit, OnDestroy {
     }
 
     search(): void {
+        this.blockUI.start();
         this.service
             .getBaseRate(this.filter.currency, this.filter.date, this.filter.rates)
-            .pipe(takeUntil(this.ngUnsubscribe))
+            .pipe(
+                takeUntil(this.ngUnsubscribe),
+                catchError(error => this.catchErrorFn(error)),
+                finalize(() => this.blockUI.stop())
+            )
             .subscribe((newModel: BaseCurrencyDto) => {
                 this.model = newModel;
                 this.sortRates = this.model.rates.slice();
@@ -74,6 +99,11 @@ export class DefaultPageComponent implements OnInit, OnDestroy {
                 }
                 this.filter.currency = this.model.base;
             });
+    }
+
+    protected catchErrorFn(error: any) {
+        this.toastr.error('Ошибка загрузки данных');
+        return throwError(error);
     }
 
     ngOnDestroy(): void {

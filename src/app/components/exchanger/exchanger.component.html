@@ -15,6 +15,7 @@
                                     [matDatepicker]="picker"
                                     placeholder="Текущая"
                                     [(ngModel)]="exchangeDate"
+                                    (ngModelChange)="update()"
                                 />
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
@@ -23,7 +24,7 @@
                         <div class="col-5">
                             <mat-form-field>
                                 <mat-label>Меняем</mat-label>
-                                <mat-select [(ngModel)]="currencyFrom">
+                                <mat-select [(ngModel)]="currencyFrom" (ngModelChange)="update()">
                                     <mat-option *ngFor="let cur of currencies" [value]="cur">
                                         {{ cur }}
                                     </mat-option>
@@ -48,14 +49,14 @@
                             </mat-form-field>
                         </div>
                         <div class="col-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Сумма" [(ngModel)]="sum"/>
+                            <mat-form-field>
+                                <input matInput placeholder="Сумма" type="number" [(ngModel)]="currencySum" (ngModelChange)="changeCurrencySum()" />
                             </mat-form-field>
                         </div>
                         <div class="col-2"></div>
                         <div class="col-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Курс" [value]="getRate()" [disabled]="true" />
+                            <mat-form-field>
+                                <input matInput placeholder="Курс" [value]="getRate() | number: '1.0-2'" [readonly]="true" />
                             </mat-form-field>
                         </div>
                     </div>
@@ -68,7 +69,10 @@
                             </h4>
                         </div>
                         <div class="col-5">
-                            <h4 [textContent]="getValue()"></h4>
+                            <h4 *ngIf="resultChange">
+                                <span [textContent]="resultChange"> </span>
+                                <span class="m-l-xs" [textContent]="currencyTo"> </span>
+                            </h4>
                         </div>
                     </div>
                 </mat-card-footer>

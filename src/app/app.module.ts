@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -14,7 +15,6 @@ import { ExchangeRateService } from 'src/app/services';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MAT_DATE_LOCALE } from '@angular/material';
 import { ExchangerComponent } from './components/exchanger/exchanger.component';
 
 @NgModule({
@@ -33,7 +33,10 @@ import { ExchangerComponent } from './components/exchanger/exchanger.component';
             positionClass: 'toast-bottom-right',
             preventDuplicates: true
         }),
-        BlockUIModule.forRoot(),
+        BlockUIModule.forRoot({
+            message: 'Загружаем курс ...',
+            delayStop: 500
+        }),
         AppRoutingModule
     ],
     providers: [BaseRateResolver, ExchangeRateService, { provide: MAT_DATE_LOCALE, useValue: 'ru-Ru' }],
