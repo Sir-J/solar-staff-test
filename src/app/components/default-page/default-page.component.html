@@ -58,14 +58,14 @@
                                     <thead>
                                         <tr>
                                             <th mat-sort-header="name" class="col-sm-5 b-t-none">Валюта</th>
-                                            <th mat-sort-header="value" class="col-sm-5 b-t-none">Курс</th>
+                                            <th mat-sort-header="rate" class="col-sm-5 b-t-none">Курс</th>
                                             <th class="col-sm-2 b-t-none"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let rate of sortRates">
                                             <td [textContent]="rate.name"></td>
-                                            <td [textContent]="rate.value | number: '1.0-2'"></td>
+                                            <td [textContent]="rate.rate | number: '1.0-2'"></td>
                                             <td></td>
                                         </tr>
                                     </tbody>

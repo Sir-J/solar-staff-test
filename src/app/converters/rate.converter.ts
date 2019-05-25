@@ -6,7 +6,7 @@ export class RateConverter implements JsTsCustomConvert<Array<RateDto>> {
     serialize(value: Array<RateDto>): Object {
         const obj = {};
 
-        value.forEach(item => (obj[item.name] = item.value));
+        value.forEach(item => (obj[item.name] = item.rate));
 
         return obj;
     }
@@ -17,11 +17,11 @@ export class RateConverter implements JsTsCustomConvert<Array<RateDto>> {
                 result.push(new RateDto(val, value[val]));
             }
         }
-        result = result.sort((a: RateDto, b: RateDto) => {
-            if (a.name > b.name) {
+        result = result.sort((item1: RateDto, item2: RateDto) => {
+            if (item1.name > item2.name) {
                 return 1;
             }
-            if (a.name < b.name) {
+            if (item1.name < item2.name) {
                 return -1;
             }
 

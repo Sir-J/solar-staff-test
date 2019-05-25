@@ -6,10 +6,10 @@ export class RateDto {
     name: string;
 
     @JsonProperty()
-    value: number;
+    rate: number;
 
-    constructor(_name?: string, _value?: number) {
+    constructor(_name?: string, _rate?: number) {
         this.name = _name;
-        this.value = _value;
+        this.rate = _rate;
     }
 }

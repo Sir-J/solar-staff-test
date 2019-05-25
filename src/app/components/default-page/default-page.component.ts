@@ -63,13 +63,13 @@ export class DefaultPageComponent implements OnInit, OnDestroy {
             return;
         }
 
-        this.sortRates = data.sort((a: RateDto, b: RateDto) => {
+        this.sortRates = data.sort((item1: RateDto, item2: RateDto) => {
             const isAsc = sort.direction === 'asc' || sort.direction === '';
             switch (sort.active) {
                 case 'name':
-                    return this.compare(a.name, b.name, isAsc);
-                case 'value':
-                    return this.compare(a.value, b.value, isAsc);
+                    return this.compare(item1.name, item2.name, isAsc);
+                case 'rate':
+                    return this.compare(item1.rate, item2.rate, isAsc);
                 default:
                     return 0;
             }

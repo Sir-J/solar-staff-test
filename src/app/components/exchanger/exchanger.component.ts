@@ -49,13 +49,13 @@ export class ExchangerComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.resultChange =
                     this.currencyTo && this.currencySum
-                        ? (this.rates.find(rate => rate.name === this.currencyTo).value * this.currencySum).toFixed(2)
+                        ? (this.rates.find(rate => rate.name === this.currencyTo).rate * this.currencySum).toFixed(2)
                         : '';
             });
     }
 
     getRate(): string {
-        return this.currencyTo ? this.rates.find(rate => rate.name === this.currencyTo).value.toFixed(2) : '';
+        return this.currencyTo ? this.rates.find(rate => rate.name === this.currencyTo).rate.toFixed(2) : '';
     }
 
     changeCurrencySum(): void {
