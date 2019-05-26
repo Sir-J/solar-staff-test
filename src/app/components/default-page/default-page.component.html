@@ -63,9 +63,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let rate of sortRates">
-                                            <td [textContent]="rate.name"></td>
-                                            <td [textContent]="rate.rate | number: '1.0-2'"></td>
+                                        <tr *ngFor="let item of sortRates">
+                                            <td [textContent]="item.name"></td>
+                                            <td [textContent]="item.rate | number: '1.0-2'"></td>
                                             <td></td>
                                         </tr>
                                     </tbody>

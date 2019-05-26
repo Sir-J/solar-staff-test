@@ -2,13 +2,13 @@
     "name": "solar-staff",
     "version": "0.0.0",
     "scripts": {
-        "ng": "ng",
-        "start": "ng serve",
-        "build": "ng build",
-        "test": "ng test",
-        "lint": "ng lint",
-        "e2e": "ng e2e",
-        "github-pages": "ng build --prod --base-href https://Sir-j.github.io/solar-staff/ && angular-cli-ghpages"
+        "ng": "npx ng",
+        "start": "npx ng serve",
+        "build": "npx ng build",
+        "test": "npx ng test",
+        "lint": "npx ng lint",
+        "e2e": "npx ng e2e",
+        "gh-pages": "npx ng build --prod --base-href https://Sir-j.github.io/solar-staff/ && angular-cli-ghpages"
     },
     "private": true,
     "dependencies": {
@@ -23,7 +23,7 @@
         "@angular/platform-browser-dynamic": "^7.2.15",
         "@angular/router": "^7.2.15",
         "bootstrap": "^4.3.1",
-        "core-js": "^3.1.2",
+        "core-js": "^2.6.8",
         "jquery": "^3.4.1",
         "js-ts-mapper": "^1.1.1-beta",
         "moment": "^2.24.0",
@@ -36,7 +36,7 @@
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.11.0",
-        "@angular/cli": "~7.1.4",
+        "@angular/cli": "~7.3.9",
         "@angular/compiler-cli": "^7.2.15",
         "@angular/language-service": "^7.2.15",
         "@types/node": "~8.9.4",
