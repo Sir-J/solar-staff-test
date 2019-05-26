@@ -44,7 +44,7 @@ export class ExchangerComponent implements OnInit, OnDestroy {
         this.resultExchangeValueUpdate
             .pipe(
                 takeUntil(this.ngUnsubscribe),
-                debounceTime(500)
+                debounceTime(500),
             )
             .subscribe(() => {
                 this.resultChange =
@@ -55,7 +55,7 @@ export class ExchangerComponent implements OnInit, OnDestroy {
     }
 
     getRate(): string {
-        return this.currencyTo ? this.rates.find(rate => rate.name === this.currencyTo).rate.toFixed(2) : '';
+        return this.currencyTo ? this.rates.find(rate => rate.name === this.currencyTo).rate.toFixed(2) : undefined;
     }
 
     changeCurrencySum(): void {

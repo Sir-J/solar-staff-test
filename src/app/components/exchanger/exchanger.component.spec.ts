@@ -52,4 +52,13 @@ describe('ExchangerComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('getRate() return value', () => {
+        component.currencyTo = 'RUB';
+        expect(component.getRate()).toEqual((72.1352).toFixed(2));
+    });
+
+    it('getRate() return undefined', () => {
+        expect(component.getRate()).toBeUndefined();
+    });
 });
