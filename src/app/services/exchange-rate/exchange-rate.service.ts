@@ -22,12 +22,7 @@ export class ExchangeRateService {
             )
             .pipe(
                 map((obj: any) => {
-                    const dto = new BaseCurrencyDto();
-                    dto.base = obj.base;
-                    dto.date = obj.date;
-                    dto.rates = new RateConverter().deserialize(obj.rates);
-                    // return this.mapper.deserialize<BaseCurrencyDto>(obj, BaseCurrencyDto);
-                    return dto;
+                    return this.mapper.deserialize<BaseCurrencyDto>(obj, BaseCurrencyDto);
                 })
             );
     }
