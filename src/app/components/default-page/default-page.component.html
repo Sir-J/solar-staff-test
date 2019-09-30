@@ -22,7 +22,7 @@
                                     matInput
                                     [min]="minDate"
                                     [max]="maxDate"
-                                    (ngModelChange)="search()"
+                                    (dateChange)="search()"
                                     [matDatepicker]="picker"
                                     placeholder="Текущая"
                                     [(ngModel)]="filter.date"

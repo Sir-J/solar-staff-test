@@ -9,7 +9,7 @@ import { RateConverter } from 'app/converters/rate.converter';
 
 @Injectable()
 export class ExchangeRateService {
-    apiUrl = 'https://api.exchangeratesapi.io';
+    apiUrl = 'https://api.ratesapi.io/api';
     private mapper = new JsTsMapper();
     constructor(private service: HttpClient) {}
 
