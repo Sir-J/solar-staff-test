@@ -1,0 +1,31 @@
+language: node_js
+
+node_js:
+  - '10'
+
+script: npm test
+
+notifications:
+  email: false
+
+cache:
+  directories:
+  - node_modules
+
+after_success:
+- npm run codecov
+
+addons:
+  chrome: stable
+
+dist: trusty
+
+sudo: required
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: b5a3e8f23549aaa2fce172ccada31b392b04984f
+  keep_history: true
+  on:
+    branch: master

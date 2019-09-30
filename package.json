@@ -5,10 +5,11 @@
         "ng": "npx ng",
         "start": "npx ng serve",
         "build": "npx ng build",
-        "test": "npx ng test",
+        "test": "ng test --watch=false",
+        "test:watch": "ng test",
         "lint": "npx ng lint",
         "e2e": "npx ng e2e",
-        "gh-pages": "npx ng build --prod --base-href https://Sir-j.github.io/solar-staff/ && angular-cli-ghpages"
+        "deploy": "gh-pages -d dist"
     },
     "private": true,
     "dependencies": {
@@ -39,10 +40,12 @@
         "@angular/cli": "^8.3.6",
         "@angular/compiler-cli": "^8.2.8",
         "@angular/language-service": "^8.2.8",
-        "@types/node": "~12.7.8",
         "@types/jasmine": "^3.4.1",
         "@types/jasminewd2": "^2.0.7",
+        "@types/node": "~12.7.8",
+        "angular-cli-ghpages": "^0.6.0",
         "codelyzer": "^5.1.2",
+        "gh-pages": "^2.1.1",
         "jasmine-core": "^3.5.0",
         "jasmine-spec-reporter": "^4.2.1",
         "karma": "^4.3.0",
@@ -53,7 +56,6 @@
         "protractor": "^5.4.2",
         "ts-node": "^8.4.1",
         "tslint": "^5.20.0",
-        "typescript": "~3.4.0",
-        "gh-pages": "^2.1.1"
+        "typescript": "~3.4.0"
     }
 }
