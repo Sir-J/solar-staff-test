@@ -23,7 +23,7 @@ dist: trusty
 sudo: required
 
 before_deploy:
-  - npm run build
+  - npm run deploy
   - echo -e "node_modules\npackage-lock.json" > .gitignore
 
 deploy:
