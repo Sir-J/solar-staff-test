@@ -25,7 +25,7 @@ sudo: required
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: "8d36d890c95edc303b80602944268691cde9850c"
+  github_token: $GITHUB_TOKEN
   keep_history: true
   on:
     branch: master
