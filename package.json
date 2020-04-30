@@ -25,7 +25,7 @@
         "@angular/router": "^8.2.8",
         "bootstrap": "^4.3.1",
         "core-js": "^3.2.1",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "js-ts-mapper": "^1.1.1",
         "moment": "^2.24.0",
         "ng-block-ui": "^2.1.7",
